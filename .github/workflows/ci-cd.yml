@@ -1,0 +1,24 @@
+name: CI Pipeline Simple
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install and test
+      run: |
+        npm install
+        npm test
+        echo "🎉 Tests réussis !"
